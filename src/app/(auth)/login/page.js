@@ -1,5 +1,4 @@
 import LoginForm from "@/components/login/LoginForm";
-import { loginUser } from "@/lib/actions/auth";
 import Link from "next/link";
 
 function Login() {

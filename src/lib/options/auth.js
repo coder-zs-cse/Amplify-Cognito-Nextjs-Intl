@@ -3,6 +3,7 @@ import User from "@/db/model/user";
 import dbConnect from "@/config/dbConfig";
 import bcrypt from "bcryptjs";
 import GoogleProvider from "next-auth/providers/google";
+import { loginUser } from "@/utils/cognito";
 
 export const authOptions = {
   providers: [
@@ -26,29 +27,45 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        await dbConnect();
+
         try {
           const { email, password } = credentials;
-          console.log("credentials", credentials);
-          const user = await User.findOne({ email });
-          console.log(user);
-          if (user) {
-            const isPasswordCorrect = await bcrypt.compare(
-              password,
-              user.password
-            );
-            if (isPasswordCorrect) {
-              return user;
-            } else {
-              throw new Error("Password is incorrect");
-            }
-          } else {
-            throw new Error("No user found");
-          }
-        } catch (error) {
-          console.log("some error in authorize");
-          throw new Error("Some error occured");
+          const myuser = await loginUser(email, password);
+          if (myuser && myuser.idToken && myuser.idToken.payload) {
+            const userData = {
+              userId: myuser.idToken.payload.sub,
+              email: myuser.idToken.payload.email,
+              name: myuser.idToken.payload.name,
+            };
+            return userData;
+          } else return null;
+        } catch (err) {
+          console.log("error inside authorize", err);
+          return null;
         }
+        // await dbConnect();
+        // try {
+        //   const { email, password } = credentials;
+        //   console.log("credentials", credentials);
+        //   const user = await User.findOne({ email });
+        //   console.log(user);
+        //   if (user) {
+        //     const isPasswordCorrect = await bcrypt.compare(
+        //       password,
+        //       user.password
+        //     );
+        //     if (isPasswordCorrect) {
+        //       return user;
+        //     } else {
+        //       throw new Error("Password is incorrect");
+        //     }
+        //   } else {
+        //     throw new Error("No user found");
+        //   }
+        // } catch (error) {
+        //   console.log("some error in authorize");
+        //   throw new Error("Some error occured");
+        // }
       },
     }),
   ],
@@ -58,7 +75,7 @@ export const authOptions = {
       if (account?.provider === "credentials") {
         return true;
       }
-      if(account?.provider == "google"){
+      if (account?.provider == "google") {
         await dbConnect();
         try {
           const existingUser = await User.findOne({ email: profile.email });
