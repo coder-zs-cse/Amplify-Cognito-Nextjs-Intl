@@ -136,6 +136,6 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "/en/login",
   },
 };

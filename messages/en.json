@@ -1,0 +1,76 @@
+{
+  "HomePage": {
+    "title": "Home",
+    "description": "Welcome to the Home page! This is the starting point of the Next.js Internationalization (i18n) example. Feel free to explore the app and learn more about the power of the App Router and how to manage multilingual content seamlessly using next-intl."
+  },
+  "IndexPage": {
+    "title": "next-intl example",
+    "description": "Welcome to the Next.js Internationalization (i18n) example! This demo showcases the power of the App Router and how to manage multilingual content seamlessly using next-intl."
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "description": "Oops! It seems like you've stumbled upon a page that doesn't exist. Don't worry, our internationalization magic is still hard at work on other parts of the app. Feel free to navigate back to explore more!"
+  },
+  "Navigation": {
+    "Home": "Home",
+    "About": "About",
+    "Contact": "Contact",
+    "Blog": "Blog",
+    "Login": "Login",
+    "Logout": "Logout"
+  },
+  "Footer": {
+    "copyright": "© 2024 Your App. All rights reserved."
+  },
+  "RegisterForm": {
+    "fullName": "Full Name",
+    "emailAddress": "Email address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "register": "Register",
+    "registering": "Registering...",
+    "registerWithGoogle": "Register with Google",
+    "registerWithCognito": "Register with Cognito",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login",
+    "fullNameRequired": "Full Name is required",
+    "invalidEmail": "Invalid email address",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordsMustMatch": "Passwords must match"
+  },
+  "LoginForm": {
+    "emailAddress": "Email address",
+    "password": "Password",
+    "login": "Login",
+    "loggingIn": "Logging in...",
+    "dontHaveAccount": "Don't have an account?",
+    "register": "Register",
+    "invalidEmail": "Invalid email",
+    "passwordMinLength": "Password must be at least 8 characters"
+  },
+  "ConfirmEmail": {
+    "verificationCodeLength": "Verification code must be 6 digits",
+    "emailConfirmed": "Email confirmed successfully",
+    "redirectingToLogin": "Redirecting to login page",
+    "verificationCodeResent": "Verification code resent successfully",
+    "resendCodeFailed": "Failed to resend verification code",
+    "enterVerificationCode": "Enter the 6 digit verification code sent to your email",
+    "submitting": "Submitting...",
+    "submit": "Submit",
+    "resendVerificationCode": "Resend verification code",
+    "alreadyVerified": "Already verified your email?",
+    "login": "Login"
+  },
+  "ResetPassword": {
+    "emailAddress": "Your Email Address",
+    "submit": "Submit",
+    "resendCode": "Resend verification code",
+    "knowPassword": "Know your password?",
+    "login": "Login",
+    "redirectingToLogin": "Redirecting to login page",
+    "resetFailed": "Reset failed",
+    "resetError": "An error occurred during reset",
+    "codeSent": "Verification code sent successfully",
+    "resendError": "An error occurred while resending the code"
+  }
+}

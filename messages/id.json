@@ -1,0 +1,76 @@
+{
+  "HomePage": {
+    "title": "Home",
+    "description": "Selamat datang di halaman Beranda! Ini adalah titik awal contoh Next.js Internationalization (i18n). Jelajahi aplikasi ini dan pelajari lebih lanjut tentang kekuatan App Router dan cara mengelola konten multibahasa dengan lancar menggunakan next-intl."
+  },
+  "IndexPage": {
+    "title": "contoh next-intl",
+    "description": "Selamat datang di contoh Next.js Internationalization (i18n)! Demo ini memperlihatkan kekuatan App Router dan cara mengelola konten multibahasa dengan lancar menggunakan next-intl."
+  },
+  "NotFoundPage": {
+    "title": "Halaman Tidak Ditemukan",
+    "description": "Ups! Sepertinya Anda menemukan halaman yang tidak ada. Jangan khawatir, sihir internasionalisasi kami masih bekerja keras di bagian lain aplikasi. Silakan kembali untuk menjelajahi lebih lanjut!"
+  },
+  "Navigation": {
+    "Home": "Beranda",
+    "About": "Tentang",
+    "Contact": "Kontak",
+    "Blog": "Blog",
+    "Login": "Masuk",
+    "Logout": "Keluar"
+  },
+  "Footer": {
+    "copyright": "© 2024 Aplikasi Anda. Hak cipta dilindungi."
+  },
+  "RegisterForm": {
+    "fullName": "Nama Lengkap",
+    "emailAddress": "Alamat Email",
+    "password": "Kata Sandi",
+    "confirmPassword": "Konfirmasi Kata Sandi",
+    "register": "Daftar",
+    "registering": "Mendaftar...",
+    "registerWithGoogle": "Daftar dengan Google",
+    "registerWithCognito": "Daftar dengan Cognito",
+    "alreadyHaveAccount": "Sudah punya akun?",
+    "login": "Masuk",
+    "fullNameRequired": "Nama Lengkap wajib diisi",
+    "invalidEmail": "Alamat email tidak valid",
+    "passwordMinLength": "Kata sandi harus minimal 8 karakter",
+    "passwordsMustMatch": "Kata sandi harus sama"
+  },
+  "LoginForm": {
+    "emailAddress": "Alamat Email",
+    "password": "Kata Sandi",
+    "login": "Masuk",
+    "loggingIn": "Sedang Masuk...",
+    "dontHaveAccount": "Belum punya akun?",
+    "register": "Daftar",
+    "invalidEmail": "Email tidak valid",
+    "passwordMinLength": "Kata sandi harus minimal 8 karakter"
+  },
+  "ConfirmEmail": {
+    "verificationCodeLength": "Kode verifikasi harus 6 digit",
+    "emailConfirmed": "Email berhasil dikonfirmasi",
+    "redirectingToLogin": "Mengalihkan ke halaman login",
+    "verificationCodeResent": "Kode verifikasi berhasil dikirim ulang",
+    "resendCodeFailed": "Gagal mengirim ulang kode verifikasi",
+    "enterVerificationCode": "Masukkan kode verifikasi 6 digit yang dikirim ke email Anda",
+    "submitting": "Mengirim...",
+    "submit": "Kirim",
+    "resendVerificationCode": "Kirim ulang kode verifikasi",
+    "alreadyVerified": "Sudah memverifikasi email Anda?",
+    "login": "Masuk"
+  },
+  "ResetPassword": {
+    "emailAddress": "Alamat Email Anda",
+    "submit": "Kirim",
+    "resendCode": "Kirim ulang kode verifikasi",
+    "knowPassword": "Sudah tahu password Anda?",
+    "login": "Masuk",
+    "redirectingToLogin": "Mengalihkan ke halaman login",
+    "resetFailed": "Reset gagal",
+    "resetError": "Terjadi kesalahan saat mereset",
+    "codeSent": "Kode verifikasi berhasil dikirim",
+    "resendError": "Terjadi kesalahan saat mengirim ulang kode"
+  }
+}

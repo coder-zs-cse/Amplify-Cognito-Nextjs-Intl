@@ -1,17 +1,20 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/options/auth';
 import { redirect } from 'next/navigation';
-async function blog() {
+import { useTranslations } from 'next-intl';
+async function blog({params}) {
+  // const t = useTranslations('IndexPage');
+  const locale = params.locale; 
   const session = await getServerSession(authOptions);
   console.log("0l",session);
 
   if(!session){
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
   return (
     <div> 
-    blog 
-    {session?.user.name}
+    
+    Hi {session?.user.name}!
     </div>
   )
 }

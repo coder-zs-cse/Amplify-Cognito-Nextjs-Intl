@@ -1,6 +1,6 @@
 import { CognitoUser, AuthenticationDetails, CognitoUserAttribute } from 'amazon-cognito-identity-js';
 import { userPool } from '@/config/cognito';
-
+import { CognitoAuth } from 'amazon-cognito-auth-js';
 
 export const registerUser = (email, password, name) => {
   return new Promise((resolve, reject) => {
@@ -122,3 +122,37 @@ export const logoutUser = () => {
     cognitoUser.signOut();
   }
 };
+
+
+
+
+
+
+
+export function signupThroughGoogle() {
+  const authData = {
+      ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID, // Your client id here
+      AppWebDomain: process.env.COGNITO_DOMAIN, // Your Cognito domain here
+      TokenScopesArray: ['email', 'openid', 'profile'], // Scopes for the tokens
+      RedirectUriSignIn: '/api/auth/callback/cognito', // Your redirect URI after sign-in
+      RedirectUriSignOut: '/', // Your redirect URI after sign-out
+      IdentityProvider: 'Google', // Identity provider
+      UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID // Your user pool id here
+  };
+
+  const auth = new CognitoAuth(authData);
+
+  auth.userhandler = {
+      onSuccess: function(result) {
+          console.log("Sign in success: ", result);
+      },
+      onFailure: function(err) {
+          console.error("Sign in error: ", err);
+      }
+  };
+
+  // Initiate the sign-in process
+  auth.getSession();
+}
+
+

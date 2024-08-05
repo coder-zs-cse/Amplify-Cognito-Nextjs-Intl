@@ -1,17 +1,17 @@
-import LoginForm from "@/components/login/LoginForm";
+import RegisterForm from "@/components/auth/RegisterForm";
 import Link from "next/link";
 
-function Login() {
+function Register() {
   return (
     <div className=" bg-gray-100 flex flex-col justify-center py-6 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className=" text-center text-3xl font-extrabold text-gray-900">
-          Login to your account
+          Create your account
         </h2>
       </div>
-      <LoginForm />
+      <RegisterForm />
     </div>
   );
 }
 
-export default Login;
+export default Register;
