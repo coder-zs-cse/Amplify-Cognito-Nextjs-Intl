@@ -1,5 +1,4 @@
 import RegisterForm from "@/components/auth/RegisterForm";
-import Link from "next/link";
 
 function Register() {
   return (

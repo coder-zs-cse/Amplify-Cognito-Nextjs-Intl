@@ -1,9 +1,9 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "./globals.css";
-import Navbar from "@/components/navbar/Navbar";
 import { Providers } from "./providers";
 import { Toaster } from "react-hot-toast";
+import ConfigureAmplifyClientSide from "./amplify-cognito-config";
 
 export default async function RootLayout({ children, params: { locale } }) {
   const messages = await getMessages();
@@ -12,8 +12,8 @@ export default async function RootLayout({ children, params: { locale } }) {
       <body>
         <Providers>
           <NextIntlClientProvider messages={messages}>
-            <Navbar />
             <Toaster />
+            <ConfigureAmplifyClientSide />
             {children}
           </NextIntlClientProvider>
         </Providers>

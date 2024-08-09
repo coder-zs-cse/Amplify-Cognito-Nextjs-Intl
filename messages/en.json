@@ -43,6 +43,7 @@
     "password": "Password",
     "login": "Login",
     "loggingIn": "Logging in...",
+    "loginWithGoogle": "Login with Google",
     "dontHaveAccount": "Don't have an account?",
     "register": "Register",
     "invalidEmail": "Invalid email",

@@ -43,6 +43,7 @@
     "password": "Kata Sandi",
     "login": "Masuk",
     "loggingIn": "Sedang Masuk...",
+    "loginWithGoogle": "Daftar dengan Google",
     "dontHaveAccount": "Belum punya akun?",
     "register": "Daftar",
     "invalidEmail": "Email tidak valid",

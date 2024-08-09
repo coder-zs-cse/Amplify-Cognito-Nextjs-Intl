@@ -1,8 +1,13 @@
-"use client";
-import { SessionProvider } from "next-auth/react";
+// "use client";
+// import { SessionProvider } from "next-auth/react";
+// import {Amplify} from 'aws-amplify';
+// import settings from './amplify-cognito-config';
+
+// Amplify.configure({Auth:settings});
+
 
 export function Providers({ children }) {
-  return (
-      <SessionProvider>{children}</SessionProvider>
-  );
+  return children
+      // <SessionProvider>{children}</SessionProvider>
+  // );
 } 

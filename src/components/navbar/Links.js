@@ -7,27 +7,29 @@ import { TiThMenuOutline } from "react-icons/ti";
 import { useTranslations } from "next-intl";
 import LocalSwitcher from "./localSwitcher";
 import { useParams } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
+import useAuthUser from '@/hooks/use-auth-user';
+import { logoutUser } from "@/utils/cognito";
+import { useRouter } from "next/navigation";
 
 export default function Navigation() {
+  const router = useRouter();
   const t = useTranslations("Navigation");
   const pathname = usePathname();
   const params = useParams();
   const locale = params.locale;
   const [isOpen, setIsOpen] = useState(false);
-  const { data: session, status: sessionStatus } = useSession();
+  const user = useAuthUser();
+  const sessionStatus = user ? "authenticated" : "unauthenticated";
+
 
   const handleSignOut = async () => {
-    const result = await signOut({ 
-      callbackUrl: `/${locale}/login`,
-      redirect: false
-    });
+    const result = await logoutUser()
     
-    // router.push(result.url);
+    router.push(`/${locale}/login`);
   };
 
   const Links = [
-    { title: t("Home"), url: `/${locale}` },
+    { title: t("Home"), url: `/${locale}/home` },
     { title: t("Blog"), url: `/${locale}/blog` },
     { title: t("Contact"), url: `/${locale}/contact` },
     { title: t("About"), url: `/${locale}/about` },

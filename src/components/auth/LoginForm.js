@@ -4,14 +4,13 @@ import { z } from 'zod';
 import { Formik, Form } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import Link from "next/link";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter, useParams } from "next/navigation";
 import { Field, Button } from '@/components/form/formItems';
 import { loginUser } from '@/utils/cognito';
 import { loginErrorMessage } from '@/utils/authErrors';
-import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { signInWithRedirect } from "aws-amplify/auth";
 
 function LoginForm() {
   const router = useRouter();
@@ -32,7 +31,10 @@ function LoginForm() {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     const {email, password} = values;
     try {
-      signIn("credentials", { email, password , callbackUrl: `/${locale}/` });
+      // signIn("credentials", { email, password , callbackUrl: `/${locale}/` });
+      await loginUser(email, password);
+      toast.success("Login successful");
+      router.push(`/${locale}/`);
     } catch (error) {
       toast.error(loginErrorMessage(error))
       console.error('Login error', error);
@@ -70,7 +72,17 @@ function LoginForm() {
             </Form>
           )}
         </Formik>
-          
+      
+        <Button
+          onClick={()=>signInWithRedirect({
+            provider: "Google",
+          })}
+          className="mt-2 bg-red-600 hover:bg-red-700 focus:ring-red-500"
+        >
+          {t("loginWithGoogle")}
+        </Button>
+
+
         <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
