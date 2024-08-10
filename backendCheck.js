@@ -1,8 +1,7 @@
-
-const AWS = require('aws-sdk');
+const AWS = require("aws-sdk");
 
 AWS.config.update({
-  region: 'ap-south-1' // replace with your region
+  region: "ap-south-1", // replace with your region
 });
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
@@ -19,36 +18,41 @@ function getKey(header, callback) {
   });
 }
 
-const token = ""
+const token =""
 
 // console.log(token);
-
 
 jwt.verify(token, getKey, { algorithms: ["RS256"] }, (err, decoded) => {
   if (err) {
     console.log("inavalid token");
-    
-  }
-  else console.log("token is valid");
-  
+  } else console.log("token is valid");
+
   // Token is valid, you can now use the decoded information
   const userId = decoded.sub;
   const email = decoded.email;
 
-    console.log("decoded", decoded);
-    
-    getUserAttributes(token).then((data) => {
-      console.log("user attributes", data);
-    });
-  
-});
+  console.log("decoded", decoded);
 
+  getUserAttributes(token).then((data) => {
+    console.log("user attributes", data);
+  });
+
+  const userGroups = decoded["cognito:groups"] || [];
+  const isAdmin = userGroups.includes("Admin");
+  if (isAdmin) {
+    console.log("User is an admin");
+  } else {
+    console.log("User is not an admin");
+  }
+
+
+});
 
 const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 
 function getUserAttributes(accessToken) {
   const params = {
-    AccessToken: accessToken
+    AccessToken: accessToken,
   };
 
   return new Promise((resolve, reject) => {

@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@aws-amplify/adapter-nextjs": "^1.2.11",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^5.16.7",
     "amazon-cognito-identity-js": "^6.3.12",
     "aws-amplify": "^6.4.4",
     "aws-sdk": "^2.1671.0",

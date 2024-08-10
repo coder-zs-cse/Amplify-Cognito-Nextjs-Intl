@@ -1,27 +1,101 @@
-import React from 'react';
-import { Field as FormikField, ErrorMessage } from 'formik';
+import React from "react";
+import { Field, ErrorMessage, Form as FForm } from "formik";
+import { Grid } from "@mui/material";
+export const FormField = ({ field }) => {
+  switch (field.type) {
+    case "text":
+    case "email":
+    case "password":
+      return (
+        <div className="field-wrapper">
+          <label htmlFor={field.name} className="field-label">
+            {field.label}
+          </label>
+          <Field
+            type={field.type}
+            id={field.name}
+            name={field.name}
+            placeholder={field.placeholder}
+            className="field-input"
+          />
+          <ErrorMessage
+            name={field.name}
+            component="div"
+            className="error-message"
+          />
+        </div>
+      );
+    case "select":
+      return (
+        <div className="field-wrapper">
+          <label htmlFor={field.name} className="field-label">
+            {field.label}
+          </label>
+          <Field
+            as="select"
+            id={field.name}
+            name={field.name}
+            className="field-select"
+          >
+            {field.options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Field>
+          <ErrorMessage
+            name={field.name}
+            component="div"
+            className="error-message"
+          />
+        </div>
+      );
+    // Add more cases for other input types as needed
+    default:
+      return null;
+  }
+};
 
-// Field component
-export const Field = ({ label, name, type = 'text', ...props }) => (
-  <div>
-    <label htmlFor={name} className="block text-sm font-medium text-gray-700">
-      {label}
-    </label>
-    <FormikField
-      id={name}
-      name={name}
-      type={type}
-      {...props}
-      className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-    />
-    <ErrorMessage
-      name={name}
-      component="div"
-      className="text-red-500 text-sm mt-1 "
-    />
-  </div>
-);
+export const FormRow = ({ row }) => {
+  return (
+    <div className="form-row">
+      {row.map((col, index) => {
+        const [colKey, field] = Object.entries(col)[0];
+        return (
+          <div key={`${colKey}-${index}`} className="form-col">
+            <FormField field={field} />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
+export const Form = ({ formStructure, isSubmitting }) => {
+  return (
+    <FForm>
+      <Grid container spacing={2}>
+        {formStructure.map((rowObj, index) => {
+          const [rowKey, row] = Object.entries(rowObj)[0];
+          return (
+            <Grid item xs={12} key={`${rowKey}-${index}`}>
+              <FormRow row={row} />
+            </Grid>
+          );
+        })}
+        <Grid item xs={12}>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="submit-button"
+          >
+            Submit
+          </button>
+        </Grid>
+      </Grid>
+    </FForm>
+  );
+};
 // DropDown component
 export const DropDown = ({ label, name, options, ...props }) => (
   <div>
@@ -55,7 +129,13 @@ export const Title = ({ children, className = "" }) => (
 );
 
 // Button component
-export const Button = ({ children, type = 'button', disabled = false, className = "", ...props }) => (
+export const Button = ({
+  children,
+  type = "button",
+  disabled = false,
+  className = "",
+  ...props
+}) => (
   <button
     type={type}
     disabled={disabled}
